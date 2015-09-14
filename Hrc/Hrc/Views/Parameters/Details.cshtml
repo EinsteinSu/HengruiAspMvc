@@ -1,0 +1,41 @@
+﻿@model Hrc.Models.Commons.Parameter
+
+@{
+    ViewBag.Title = "参数详细信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>参数详细信息</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Key)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Key)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("编辑参数", "Edit", new { id = Model.ParameterID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>

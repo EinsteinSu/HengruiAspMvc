@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Hrc.Models.Commons.Parameter>
+
+@{
+    ViewBag.Title = "参数管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>参数管理</h2>
+<hr />
+@Html.ActionLink("创建参数", "Create")
+<hr />
+@using (Html.BeginForm("Index", "Parameters", FormMethod.Get))
+{
+    <p>
+        键: @Html.DropDownList("keys", "所有")
+        <input type="submit" value="确定" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Key)</th>
+        <th>@Html.DisplayNameFor(model => model.Value)</th>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th>操作</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Key)</td>
+            <td>@Html.DisplayFor(model => item.Value)</td>
+            <td>@Html.DisplayFor(model => item.Description)</td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.ParameterID })
+                @Html.ActionLink("详细", "Details", new { id = item.ParameterID })
+                @Html.ActionLink("删除", "Delete", new { id = item.ParameterID })
+            </td>
+        </tr>
+    }
+</table>
