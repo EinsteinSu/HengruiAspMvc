@@ -30,12 +30,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("Delete", "Contacts", new { id = @ViewBag.ID, contactid = @ViewBag.ContactID, title = @ViewBag.Title, bcontroller = @ViewBag.Controller, baction = @ViewBag.Action }))
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", (string)@ViewBag.Action, (string)@ViewBag.Controller, new { id = @ViewBag.ID }, null)
         </div>
     }
 </div>

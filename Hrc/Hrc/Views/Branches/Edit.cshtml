@@ -44,25 +44,60 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+        <div class="table-hover">
+            <h4>Contacts</h4>
+            @Html.ActionLink("Create New", "Create", "Contacts", new { id = Model.BranchID, contactid = 0, title = "Create Branch Contacts", bcontroller = "Branches", baction = "Edit" }, null)
+            <table class="table">
+                <tr>
+                    <th>Type</th>
+                    <th>Value</th>
+                    <th></th>
+                </tr>
+                @if (Model.Contact != null)
+                {
+                    foreach (var item in Model.Contact)
+                    {
+                <tr>
+                    <td>@item.Type</td>
+                    <td>@item.Value</td>
+                    <th>
+                        @Html.ActionLink("Edit", "Edit", "Contacts", new { id = Model.BranchID, contactid = item.ContactID, title = "Edit Branch Contacts", bcontroller = "Branches", baction = "Edit" }, null)|
+                        @Html.ActionLink("Details", "Details", "Contacts", new { id = Model.BranchID, contactid = item.ContactID, title = "Branch Contacts Detail", bcontroller = "Branches", baction = "Edit" }, null)|
+                        @Html.ActionLink("Delete", "Delete", "Contacts", new { id = Model.BranchID, contactid = item.ContactID, title = "Create Branch Contacts", bcontroller = "Branches", baction = "Edit" }, null)
+                    </th>
+                </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="table-striped">
+            <h4>负责人 Contacts</h4>
+            @Html.ActionLink("Create New", "Create", "Contacts", new { id = Model.BranchID, contactid = 0, title = "Create 负责人 Contacts", bcontroller = "Branches", baction = "Edit" }, new { @class = "btn btn-default" })
+            <table class="table">
+                <tr>
+                    <th>Type</th>
+                    <th>Value</th>
+                    <th></th>
+                </tr>
+                @if (Model.Contact != null)
+                {
+                    foreach (var item in Model.FzrContact)
+                    {
+                        <tr>
+                            <td>@item.Type</td>
+                            <td>@item.Value</td>
+                            <th>
+                                @Html.ActionLink("Edit", "Edit", "Contacts", new { id = Model.BranchID, contactid = item.ContactID, title = "Edit Branch Contacts", bcontroller = "Branches", baction = "Edit" }, null)|
+                                @Html.ActionLink("Details", "Details", "Contacts", new { id = Model.BranchID, contactid = item.ContactID, title = "Branch Contacts Detail", bcontroller = "Branches", baction = "Edit" }, null)|
+                                @Html.ActionLink("Delete", "Delete", "Contacts", new { id = Model.BranchID, contactid = item.ContactID, title = "Create Branch Contacts", bcontroller = "Branches", baction = "Edit" }, null)
+                            </th>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
     </div>
 }
-<h3>联系方式</h3>
-<hr />
-<table class="table">
-    <tr>
-        <th>类型</th>
-        <th>号码</th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model.Contact)
-    {
-        <tr>
-            <td>@Html.DisplayFor(model => item.Type)</td>
-            <td>@Html.DisplayFor(model => item.Value)</td>
-            <td>@Html.ActionLink("Create", "AdditionalCreate", "Contacts", new { id = Model.BranchID }, null)</td>
-        </tr>
-    }
-</table>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

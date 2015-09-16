@@ -3,7 +3,7 @@ namespace Hrc.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class branch11 : DbMigration
+    public partial class all : DbMigration
     {
         public override void Up()
         {
@@ -24,7 +24,7 @@ namespace Hrc.Migrations
                     {
                         ContactID = c.Int(nullable: false, identity: true),
                         Type = c.Int(nullable: false),
-                        Value = c.String(),
+                        Value = c.String(nullable: false, maxLength: 30),
                         Branch_BranchID = c.Int(),
                         Branch_BranchID1 = c.Int(),
                     })

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Hrc.Models.Commons;
 using Hrc.Models.DatabaseContext;
@@ -14,8 +9,8 @@ namespace Hrc.Controllers.Commons
 {
     public class ContactsController : Controller
     {
-        private HrcDbContext db = new HrcDbContext();
-        private int branchID;
+        private readonly HrcDbContext db = new HrcDbContext();
+
         // GET: Contacts
         public async Task<ActionResult> Index()
         {
@@ -23,13 +18,14 @@ namespace Hrc.Controllers.Commons
         }
 
         // GET: Contacts/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(int? id, int? contactid, string title, string bcontroller, string baction)
         {
+            InitializeParameters(id, contactid, title, bcontroller, baction);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = await db.Contacts.FindAsync(id);
+            Contact contact = await db.Contacts.FindAsync(contactid);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -37,33 +33,20 @@ namespace Hrc.Controllers.Commons
             return View(contact);
         }
 
-        public ActionResult AdditionalCreate(int? id)
-        {
-            ViewBag.BranchID = id;
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AdditionalCreate(int? id, [Bind(Include = "ContactID,Type,Value")] Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                var item = await db.Branches.FindAsync(id);
-                if (item != null)
-                {
-                    item.Contact.Add(contact);
-                    await db.SaveChangesAsync();
-                }
-                return RedirectToAction("Index", "Branches");
-            }
-            return View();
-        }
-
         // GET: Contacts/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id, int? contactid, string title, string bcontroller, string baction)
         {
+            InitializeParameters(id, contactid, title, bcontroller, baction);
             return View();
+        }
+
+        private void InitializeParameters(int? id, int? contactid, string title, string bcontroller, string baction)
+        {
+            ViewBag.ID = id;
+            ViewBag.ContactID = contactid;
+            ViewBag.Title = title;
+            ViewBag.Controller = bcontroller;
+            ViewBag.Action = baction;
         }
 
         // POST: Contacts/Create
@@ -71,26 +54,36 @@ namespace Hrc.Controllers.Commons
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ContactID,Type,Value")] Contact contact)
+        public async Task<ActionResult> Create(int? id, string title, string bcontroller, string baction,
+            [Bind(Include = "ContactID,Type,Value")] Contact contact)
         {
             if (ModelState.IsValid)
             {
-                db.Contacts.Add(contact);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                //todo: save by title
+                Branch item = await db.Branches.FindAsync(id);
+                if (item != null)
+                {
+                    if (title.Contains("负责人"))
+                        item.FzrContact.Add(contact);
+                    else
+                        item.Contact.Add(contact);
+                    await db.SaveChangesAsync();
+                }
+                return RedirectToAction(baction, bcontroller, new { id });
             }
 
             return View(contact);
         }
 
         // GET: Contacts/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(int? id, int? contactid, string title, string bcontroller, string baction)
         {
-            if (id == null)
+            InitializeParameters(id, contactid, title, bcontroller, baction);
+            if (contactid == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = await db.Contacts.FindAsync(id);
+            Contact contact = await db.Contacts.FindAsync(contactid);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -103,25 +96,26 @@ namespace Hrc.Controllers.Commons
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ContactID,Type,Value")] Contact contact)
+        public async Task<ActionResult> Edit(int? id, string title, string bcontroller, string baction, [Bind(Include = "ContactID,Type,Value")] Contact contact)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(contact).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction(baction, bcontroller, new { id });
             }
             return View(contact);
         }
 
         // GET: Contacts/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(int? id, int? contactid, string title, string bcontroller, string baction)
         {
+            InitializeParameters(id, contactid, title, bcontroller, baction);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = await db.Contacts.FindAsync(id);
+            Contact contact = await db.Contacts.FindAsync(contactid);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -132,12 +126,12 @@ namespace Hrc.Controllers.Commons
         // POST: Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int? id, int? contactid, string title, string bcontroller, string baction)
         {
-            Contact contact = await db.Contacts.FindAsync(id);
+            Contact contact = await db.Contacts.FindAsync(contactid);
             db.Contacts.Remove(contact);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction(baction, bcontroller, new { id });
         }
 
         protected override void Dispose(bool disposing)

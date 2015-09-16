@@ -1,14 +1,12 @@
 ﻿@model Hrc.Models.Commons.Contact
 
 @{
-    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-<h2>ViewBag.AdditionalTitle</h2>
+<h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Contacts", new { id = @ViewBag.ID, title = @ViewBag.Title, bcontroller = @ViewBag.Controller, baction = @ViewBag.Action }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -41,7 +39,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", (string)@ViewBag.Action, (string)@ViewBag.Controller, new { id = @ViewBag.ID }, null)
 </div>
 
 @section Scripts {

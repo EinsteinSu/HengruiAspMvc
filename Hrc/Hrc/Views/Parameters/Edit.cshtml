@@ -1,23 +1,28 @@
 ﻿@model Hrc.Models.Commons.Parameter
 
 @{
-    ViewBag.Title = "参数修改";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>参数修改</h2>
-<hr />
+<h2>Edit</h2>
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
-        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <h4>Parameter</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ParameterID)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Key, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Key, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Key, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -25,6 +30,7 @@
             @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -32,6 +38,7 @@
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -44,7 +51,7 @@
 }
 
 <div>
-    @Html.ActionLink("返回列表", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

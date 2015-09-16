@@ -13,6 +13,7 @@ namespace Hrc.Models.Commons
 
         [Display(Name = "号码")]
         [Required(ErrorMessage = "号码不能为空")]
+        [MaxLength(30)]
         public string Value { get; set; }
     }
 

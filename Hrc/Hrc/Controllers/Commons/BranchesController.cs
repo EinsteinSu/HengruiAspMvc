@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
-using System.Net;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using Hrc.Models.Commons;
 using Hrc.Models.DatabaseContext;
@@ -10,7 +14,7 @@ namespace Hrc.Controllers.Commons
 {
     public class BranchesController : Controller
     {
-        private readonly HrcDbContext db = new HrcDbContext();
+        private HrcDbContext db = new HrcDbContext();
 
         // GET: Branches
         public async Task<ActionResult> Index()
@@ -36,7 +40,8 @@ namespace Hrc.Controllers.Commons
         // GET: Branches/Create
         public ActionResult Create()
         {
-            return View();
+            var branch = new Branch { Name = "New branch" };
+            return View(branch);
         }
 
         // POST: Branches/Create
@@ -49,6 +54,8 @@ namespace Hrc.Controllers.Commons
             if (ModelState.IsValid)
             {
                 branch.Contact = new List<Contact>();
+                branch.FzrContact = new List<Contact>();
+                db.Branches.Add(branch);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -76,12 +83,12 @@ namespace Hrc.Controllers.Commons
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "BranchID,Name,Acronym,Qddd")] Branch branch)
+        public ActionResult Edit([Bind(Include = "BranchID,Name,Acronym,Qddd")] Branch branch)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(branch).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(branch);

@@ -171,13 +171,9 @@
     <Compile Include="Controllers\Commons\BranchesController.cs" />
     <Compile Include="Controllers\Commons\ContactsController.cs" />
     <Compile Include="Controllers\Commons\ParametersController.cs" />
-    <Compile Include="Migrations\201509140459056_branch11.cs" />
-    <Compile Include="Migrations\201509140459056_branch11.Designer.cs">
-      <DependentUpon>201509140459056_branch11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201509140618524_contact.cs" />
-    <Compile Include="Migrations\201509140618524_contact.Designer.cs">
-      <DependentUpon>201509140618524_contact.cs</DependentUpon>
+    <Compile Include="Migrations\201509160254097_all.cs" />
+    <Compile Include="Migrations\201509160254097_all.Designer.cs">
+      <DependentUpon>201509160254097_all.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Commons\Branch.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -250,22 +246,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Parameters\Create.cshtml" />
+    <Content Include="Views\Parameters\Delete.cshtml" />
+    <Content Include="Views\Parameters\Details.cshtml" />
+    <Content Include="Views\Parameters\Edit.cshtml" />
+    <Content Include="Views\Parameters\Index.cshtml" />
     <Content Include="Views\Branches\Create.cshtml" />
     <Content Include="Views\Branches\Delete.cshtml" />
     <Content Include="Views\Branches\Details.cshtml" />
     <Content Include="Views\Branches\Edit.cshtml" />
     <Content Include="Views\Branches\Index.cshtml" />
-    <Content Include="Views\Parameters\Index.cshtml" />
-    <Content Include="Views\Parameters\Create.cshtml" />
-    <Content Include="Views\Parameters\Edit.cshtml" />
-    <Content Include="Views\Parameters\Details.cshtml" />
-    <Content Include="Views\Parameters\Delete.cshtml" />
     <Content Include="Views\Contacts\Create.cshtml" />
     <Content Include="Views\Contacts\Delete.cshtml" />
     <Content Include="Views\Contacts\Details.cshtml" />
     <Content Include="Views\Contacts\Edit.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
-    <Content Include="Views\Contacts\AdditionalCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,11 +274,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509140459056_branch11.resx">
-      <DependentUpon>201509140459056_branch11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509140618524_contact.resx">
-      <DependentUpon>201509140618524_contact.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509160254097_all.resx">
+      <DependentUpon>201509160254097_all.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

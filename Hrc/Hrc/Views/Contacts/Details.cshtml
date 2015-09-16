@@ -30,6 +30,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = @ViewBag.ID, contactid = @ViewBag.ContactID, title = @ViewBag.Title, bcontroller = @ViewBag.Controller, baction = @ViewBag.Action }) |
+    @Html.ActionLink("Back to List", (string)@ViewBag.Action, (string)@ViewBag.Controller, new { id = @ViewBag.ID }, null)
 </p>

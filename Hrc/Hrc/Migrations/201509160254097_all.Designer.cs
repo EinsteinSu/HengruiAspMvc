@@ -7,13 +7,13 @@ namespace Hrc.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class branch11 : IMigrationMetadata
+    public sealed partial class all : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(branch11));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(all));
         
         string IMigrationMetadata.Id
         {
-            get { return "201509140459056_branch11"; }
+            get { return "201509160254097_all"; }
         }
         
         string IMigrationMetadata.Source
