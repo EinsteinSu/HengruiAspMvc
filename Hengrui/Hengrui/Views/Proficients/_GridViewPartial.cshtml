@@ -1,0 +1,101 @@
+@using Hengrui.Commons
+@using Hengrui.DataAccess.Models.Organization.Users
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new {Controller = "Proficients", Action = "GridViewPartial"};
+
+        settings.SettingsEditing.AddNewRowRouteValues = new {Controller = "Proficients", Action = "GridViewPartialAddNew"};
+        settings.SettingsEditing.UpdateRowRouteValues = new {Controller = "Proficients", Action = "GridViewPartialUpdate"};
+        settings.SettingsEditing.DeleteRowRouteValues = new {Controller = "Proficients", Action = "GridViewPartialDelete"};
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+
+        settings.Columns.Add("Name");
+        settings.Columns.Add(s =>
+        {
+            s.FieldName = "Gender";
+            s.EditorProperties().ComboBox(c =>
+            {
+                c.ValueType = typeof(Gender);
+                c.DataSource = Enum.GetValues(typeof(Gender));
+            });
+        });
+        settings.Columns.Add(s =>
+        {
+            s.FieldName = "BirthDate";
+            s.Caption = @"Birth Date";
+            s.EditorProperties().DateEdit(d => { });
+        });
+        settings.Columns.Add(s =>
+        {
+            s.FieldName = "Zy";
+            s.EditorProperties().ComboBox(c =>
+            {
+                c.ValueType = typeof(MajorType);
+                c.DataSource = Enum.GetValues(typeof(MajorType));
+            });
+        });
+        settings.Columns.Add("Contact.Mobile");
+        settings.Columns.Add("Contact.WeiChat");
+
+        settings.Columns.Add(s =>
+        {
+            s.FieldName = "Roles";
+            s.SetEditItemTemplateContent(c =>
+            {
+                Html.DevExpress().DropDownEdit(d =>
+                {
+                    d.Name = "checkComboBox";
+                    d.SetDropDownWindowTemplateContent(ws =>
+                    {
+                        Html.DevExpress().ListBox(
+                            listBoxSettings =>
+                            {
+                                listBoxSettings.Name = "checkListBox";
+                                listBoxSettings.ControlStyle.Border.BorderWidth = 0;
+                                listBoxSettings.ControlStyle.BorderBottom.BorderWidth = 1;
+                                listBoxSettings.Height = Unit.Pixel(170);
+                                listBoxSettings.Width = Unit.Percentage(100);
+                                listBoxSettings.Properties.SelectionMode = ListEditSelectionMode.CheckColumn;
+                                listBoxSettings.Properties.Items.Add("(Select all)");
+                                foreach (var reviewRole in DataProvider.GetReviewRoles())
+                                {
+                                    listBoxSettings.Properties.Items.Add(reviewRole.Value, reviewRole.Key);
+                                }
+                                listBoxSettings.Properties.ClientSideEvents.SelectedIndexChanged = "OnListBoxSelectionChanged";
+                            }).Render();
+                    });
+                    d.Properties.AnimationType = AnimationType.None;
+                    d.Properties.ClientSideEvents.TextChanged = "SynchronizeListBoxValues";
+                    d.Properties.ClientSideEvents.DropDown = "SynchronizeListBoxValues";
+                }).Bind(DataBinder.Eval(c.DataItem, s.FieldName)).Render();
+            });
+        });
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string) ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

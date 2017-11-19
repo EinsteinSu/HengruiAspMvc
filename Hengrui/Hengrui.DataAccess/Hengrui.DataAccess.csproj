@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BAB7C2F4-B6F0-48E3-9C42-C8610CEEFAF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hengrui.DataAccess</RootNamespace>
+    <AssemblyName>Hengrui.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HengruiDataContext.cs" />
+    <Compile Include="Migrations\201711130842316_InitialCreate.cs" />
+    <Compile Include="Migrations\201711130842316_InitialCreate.Designer.cs">
+      <DependentUpon>201711130842316_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711130916463_change-contact.cs" />
+    <Compile Include="Migrations\201711130916463_change-contact.Designer.cs">
+      <DependentUpon>201711130916463_change-contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711140140501_user.cs" />
+    <Compile Include="Migrations\201711140140501_user.Designer.cs">
+      <DependentUpon>201711140140501_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711140142527_proficient-roles.cs" />
+    <Compile Include="Migrations\201711140142527_proficient-roles.Designer.cs">
+      <DependentUpon>201711140142527_proficient-roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711140733399_branch-and-region.cs" />
+    <Compile Include="Migrations\201711140733399_branch-and-region.Designer.cs">
+      <DependentUpon>201711140733399_branch-and-region.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711140741364_branch-columns.cs" />
+    <Compile Include="Migrations\201711140741364_branch-columns.Designer.cs">
+      <DependentUpon>201711140741364_branch-columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Organization\Branch.cs" />
+    <Compile Include="Models\Organization\Department.cs" />
+    <Compile Include="Models\Organization\Users\EnterpriseUser.cs" />
+    <Compile Include="Models\Organization\Users\Proficient.cs" />
+    <Compile Include="Models\Organization\Users\User.cs" />
+    <Compile Include="Models\Projects\Contract.cs" />
+    <Compile Include="Models\Projects\Emergency.cs" />
+    <Compile Include="Models\Projects\Gcgk.cs" />
+    <Compile Include="Models\Projects\OwnerLogin.cs" />
+    <Compile Include="Models\Projects\Paper.cs" />
+    <Compile Include="Models\Projects\Project.cs" />
+    <Compile Include="Models\Projects\PaymentAndBilling.cs" />
+    <Compile Include="Models\Projects\SerialNumber.cs" />
+    <Compile Include="Models\Projects\Sjdw.cs" />
+    <Compile Include="Models\Projects\Status.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711130842316_InitialCreate.resx">
+      <DependentUpon>201711130842316_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711130916463_change-contact.resx">
+      <DependentUpon>201711130916463_change-contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711140140501_user.resx">
+      <DependentUpon>201711140140501_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711140142527_proficient-roles.resx">
+      <DependentUpon>201711140142527_proficient-roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711140733399_branch-and-region.resx">
+      <DependentUpon>201711140733399_branch-and-region.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711140741364_branch-columns.resx">
+      <DependentUpon>201711140741364_branch-columns.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
