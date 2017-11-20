@@ -11,13 +11,13 @@ namespace Hengrui.Controllers
         {
             // DXCOMMENT: Pass a data model for GridView
 
-            return View(NorthwindDataProvider.GetCustomers());
+            return View();
         }
 
         public ActionResult GridViewPartialView()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
-            return PartialView("GridViewPartialView", NorthwindDataProvider.GetCustomers());
+            return PartialView("GridViewPartialView");
         }
     }
 }
