@@ -72,6 +72,30 @@
     <Compile Include="Migrations\201711140741364_branch-columns.Designer.cs">
       <DependentUpon>201711140741364_branch-columns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711210724100_city.cs" />
+    <Compile Include="Migrations\201711210724100_city.Designer.cs">
+      <DependentUpon>201711210724100_city.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210730360_user-migration.cs" />
+    <Compile Include="Migrations\201711210730360_user-migration.Designer.cs">
+      <DependentUpon>201711210730360_user-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210735372_proficient-1.cs" />
+    <Compile Include="Migrations\201711210735372_proficient-1.Designer.cs">
+      <DependentUpon>201711210735372_proficient-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210736034_proficient-2.cs" />
+    <Compile Include="Migrations\201711210736034_proficient-2.Designer.cs">
+      <DependentUpon>201711210736034_proficient-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210740027_enterpriseuser-department-nullable.cs" />
+    <Compile Include="Migrations\201711210740027_enterpriseuser-department-nullable.Designer.cs">
+      <DependentUpon>201711210740027_enterpriseuser-department-nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210753050_proficient-szdw.cs" />
+    <Compile Include="Migrations\201711210753050_proficient-szdw.Designer.cs">
+      <DependentUpon>201711210753050_proficient-szdw.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Organization\Branch.cs" />
@@ -113,6 +137,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711140741364_branch-columns.resx">
       <DependentUpon>201711140741364_branch-columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210724100_city.resx">
+      <DependentUpon>201711210724100_city.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210730360_user-migration.resx">
+      <DependentUpon>201711210730360_user-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210735372_proficient-1.resx">
+      <DependentUpon>201711210735372_proficient-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210736034_proficient-2.resx">
+      <DependentUpon>201711210736034_proficient-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210740027_enterpriseuser-department-nullable.resx">
+      <DependentUpon>201711210740027_enterpriseuser-department-nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210753050_proficient-szdw.resx">
+      <DependentUpon>201711210753050_proficient-szdw.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

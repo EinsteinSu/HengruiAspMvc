@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Hengrui.DataAccess.Models.Organization.Users;
 
@@ -33,6 +34,8 @@ namespace Hengrui.DataAccess.Models.Organization
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public virtual ICollection<Region> Regions { get; set; }
     }
 
     public class Region

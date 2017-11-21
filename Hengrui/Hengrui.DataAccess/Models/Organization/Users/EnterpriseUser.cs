@@ -10,7 +10,7 @@ namespace Hengrui.DataAccess.Models.Organization.Users
         }
 
         [ForeignKey("Department")]
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
 
         public virtual Department Department { get; set; }
     }

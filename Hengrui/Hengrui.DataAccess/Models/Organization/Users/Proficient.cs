@@ -11,6 +11,9 @@ namespace Hengrui.DataAccess.Models.Organization.Users
 
         public MajorType Zy { get; set; }
 
+        [MaxLength(200)]
+        public string Szdw { get; set; }
+
         //todo: convert to ProficientReviewRole in viewmodel
         [MaxLength(50)]
         public string Roles { get; set; }

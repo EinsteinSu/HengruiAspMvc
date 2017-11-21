@@ -28,6 +28,9 @@ namespace Hengrui.DataAccess.Models.Organization.Users
         public Contact Contact { get; set; }
 
         public bool Deleted { get; set; }
+
+        [MaxLength(50)]
+        public string OriginalId { get; set; }
     }
 
     public enum Gender
