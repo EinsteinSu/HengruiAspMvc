@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hengrui.DataAccess.Models.Projects
 {
@@ -33,9 +28,11 @@ namespace Hengrui.DataAccess.Models.Projects
         [MaxLength(20)]
         public string Name { get; set; }
 
-        public bool StoredProcedure { get; set; }
+        [MaxLength(100)]
+        public string Script { get; set; }
 
-        public string Condition { get; set; }
+        [MaxLength(100)]
+        public string Parameters { get; set; }
     }
 
     public class View
@@ -51,5 +48,4 @@ namespace Hengrui.DataAccess.Models.Projects
         [MaxLength(100)]
         public string Groups { get; set; }
     }
-
 }

@@ -104,6 +104,14 @@
     <Compile Include="Migrations\201808300902259_customview.Designer.cs">
       <DependentUpon>201808300902259_customview.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809040654203_customview-1.cs" />
+    <Compile Include="Migrations\201809040654203_customview-1.Designer.cs">
+      <DependentUpon>201809040654203_customview-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809040658441_customview-2.cs" />
+    <Compile Include="Migrations\201809040658441_customview-2.Designer.cs">
+      <DependentUpon>201809040658441_customview-2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Organization\Branch.cs" />
@@ -170,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808300902259_customview.resx">
       <DependentUpon>201808300902259_customview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809040654203_customview-1.resx">
+      <DependentUpon>201809040654203_customview-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809040658441_customview-2.resx">
+      <DependentUpon>201809040658441_customview-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

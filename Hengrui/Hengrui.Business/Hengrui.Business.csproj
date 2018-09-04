@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="BranchMgr.cs" />
     <Compile Include="CityMgr.cs" />
-    <Compile Include="Common\CustomViewConverterHelper.cs" />
     <Compile Include="CrudMgrBase.cs" />
     <Compile Include="CustomViewMgr.cs" />
     <Compile Include="DepartmentMgr.cs" />
@@ -74,6 +73,8 @@
       <Name>Hengrui.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
