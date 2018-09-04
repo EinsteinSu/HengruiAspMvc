@@ -4,13 +4,13 @@ using Hengrui.DataAccess.Models.Organization.Users;
 
 namespace Hengrui.DataAccess.Models.Projects
 {
-    public class Emergency
+    public class ProjectLevel
     {
         [Key]
         [ForeignKey("Project")]
         public int ProjectId { get; set; }
 
-        public EmergencyLevel Level { get; set; }
+        public Level Level { get; set; }
 
         public string Description { get; set; }
 
@@ -19,7 +19,7 @@ namespace Hengrui.DataAccess.Models.Projects
         public virtual Project Project { get; set; }
     }
 
-    public enum EmergencyLevel
+    public enum Level
     {
         Normal,
         Middle,

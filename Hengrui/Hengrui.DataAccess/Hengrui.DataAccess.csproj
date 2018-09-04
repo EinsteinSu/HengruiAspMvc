@@ -96,6 +96,14 @@
     <Compile Include="Migrations\201711210753050_proficient-szdw.Designer.cs">
       <DependentUpon>201711210753050_proficient-szdw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808300717081_rename.cs" />
+    <Compile Include="Migrations\201808300717081_rename.Designer.cs">
+      <DependentUpon>201808300717081_rename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808300902259_customview.cs" />
+    <Compile Include="Migrations\201808300902259_customview.Designer.cs">
+      <DependentUpon>201808300902259_customview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Organization\Branch.cs" />
@@ -105,6 +113,7 @@
     <Compile Include="Models\Organization\Users\User.cs" />
     <Compile Include="Models\Projects\Contract.cs" />
     <Compile Include="Models\Projects\Emergency.cs" />
+    <Compile Include="Models\Projects\CustomView.cs" />
     <Compile Include="Models\Projects\Gcgk.cs" />
     <Compile Include="Models\Projects\OwnerLogin.cs" />
     <Compile Include="Models\Projects\Paper.cs" />
@@ -112,7 +121,7 @@
     <Compile Include="Models\Projects\PaymentAndBilling.cs" />
     <Compile Include="Models\Projects\SerialNumber.cs" />
     <Compile Include="Models\Projects\Sjdw.cs" />
-    <Compile Include="Models\Projects\Status.cs" />
+    <Compile Include="Models\Projects\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711210753050_proficient-szdw.resx">
       <DependentUpon>201711210753050_proficient-szdw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300717081_rename.resx">
+      <DependentUpon>201808300717081_rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300902259_customview.resx">
+      <DependentUpon>201808300902259_customview.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,25 +6,26 @@ using Hengrui.DataAccess.Models.Organization.Users;
 
 namespace Hengrui.DataAccess.Models.Projects
 {
-    public class ProjectStatus : StatusBase<ProjectStatusType>
+
+    public class ProjectState : StateBase<ProjectStateType>
     {
     }
 
-    public class PaperStatus : StatusBase<PaperStatusType>
+    public class PaperState : StateBase<PaperStateType>
     {
     }
 
-    public class DocumentStatus : StatusBase<DocumentStatusType>
+    public class DocumentationState : StateBase<DocumentationStateType>
     {
     }
 
-    public class ContractStatus : StatusBase<ContractStatusType>
+    public class ContractState : StateBase<ContractStateType>
     {
     }
 
-    public class StatusBase<T> where T : struct
+    public class StateBase<T> where T : struct
     {
-        protected StatusBase()
+        protected StateBase()
         {
             Czsj = DateTime.Now;
         }
@@ -46,31 +47,34 @@ namespace Hengrui.DataAccess.Models.Projects
         public virtual Project Project { get; set; }
     }
 
-    public static class StatusExtensions
+    public static class StateExtensions
     {
         public static T GetCurrentStatus<T, TT>(this ICollection<T> statusCollection)
-            where T : StatusBase<TT>
+            where T : StateBase<TT>
             where TT : struct
         {
             return statusCollection.OrderByDescending(d => d.Czsj).FirstOrDefault();
         }
     }
 
-    public enum ProjectStatusType
+    public enum ProjectStateType
     {
         接件,
+        申请项目信息复核,
+        项目信息复核不通过,
+        项目信息复核通过,
         收件
     }
 
-    public enum ContractStatusType
+    public enum ContractStateType
     {
     }
 
-    public enum PaperStatusType
+    public enum PaperStateType
     {
     }
 
-    public enum DocumentStatusType
+    public enum DocumentationStateType
     {
     }
 }

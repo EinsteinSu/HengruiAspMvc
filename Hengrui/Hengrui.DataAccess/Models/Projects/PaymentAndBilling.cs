@@ -19,7 +19,7 @@ namespace Hengrui.DataAccess.Models.Projects
 
         public bool IsValid
         {
-            get => _isValid;
+            get { return _isValid; }
             set
             {
                 _isValid = value;

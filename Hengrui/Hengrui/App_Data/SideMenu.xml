@@ -12,10 +12,10 @@
     <item Text="Regions" />
     <item Text="SQL Server 2008 R2" />
   </group>
-  <group Text="Browser">
-    <item Text="Chrome" />
-    <item Text="Firefox" />
-    <item Text="Internet Explorer" />
+  <group Text="Administration">
+    <item Text="Views" NavigateUrl="/viewdefines"/>
+    <item Text="Filters"  NavigateUrl="/filters"/>
+    <item Text="Custom Views" NavigateUrl="/customviews"/>
     <item Text="Safari" />
     <item Text="Opera" />
   </group>

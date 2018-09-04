@@ -13,15 +13,16 @@ namespace Hengrui.Controllers
     public class ProjectsController : ProjectControllerBase
     {
         // GET: Projects
-        public ActionResult Index()
+        public ActionResult Index(string viewName)
         {
+            ViewBag.ViewName = viewName;
             return View("");
         }
 
         [ValidateInput(false)]
-        public ActionResult GridViewPartial()
+        public ActionResult GridViewPartial(string viewName)
         {
-            return GetList();
+            return new ContentResult() { Content = viewName };
         }
 
         [HttpPost, ValidateInput(false)]
@@ -81,6 +82,12 @@ namespace Hengrui.Controllers
         }
 
 
-        public override ProjectControllerViewModel ProjectViewModel { get; }
+        public override ProjectControllerViewModel ProjectViewModel
+        {
+            get
+            {
+                return new ProjectControllerViewModel { DisplayColumns = new[] { "a", "b" } };
+            }
+        }
     }
 }

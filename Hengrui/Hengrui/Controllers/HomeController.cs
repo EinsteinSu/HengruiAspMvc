@@ -3,8 +3,8 @@ using Hengrui.Models;
 
 namespace Hengrui.Controllers
 {
-    [RequireHttps]
-    [Authorize]
+    //[RequireHttps]
+    //[Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

@@ -131,8 +131,14 @@ namespace Hengrui.Models
         [Display(Name = "Remember me?")]
         public bool? RememberMe
         {
-            get => rememberMe ?? false;
-            set => rememberMe = value;
+            get
+            {
+                return rememberMe ?? false;
+            }
+            set
+            {
+                 rememberMe = value;
+            }
         }
     }
 

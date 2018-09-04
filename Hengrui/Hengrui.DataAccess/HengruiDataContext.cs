@@ -26,5 +26,11 @@ namespace Hengrui.DataAccess
         public IDbSet<Region> Regions { get; set; }
 
         public IDbSet<Branch> Branches { get; set; }
+
+        public IDbSet<View> Views { get; set; }
+
+        public IDbSet<Filter> Filters { get; set; }
+
+        public IDbSet<CustomView> CustomViews { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace Hengrui.DataAccess.Models.Projects
 
         public virtual Jzfl Jzfl { get; set; }
 
+        [MaxLength(20)]
         public string Wxxfl { get; set; }
 
         public virtual ICollection<Gcgk> Gcgks { get; set; }
