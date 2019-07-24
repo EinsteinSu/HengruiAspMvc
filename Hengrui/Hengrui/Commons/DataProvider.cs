@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Hengrui.Business;
 using Hengrui.DataAccess.Models.Organization;
 using Hengrui.DataAccess.Models.Organization.Users;
+using Hengrui.DataAccess.Models.Projects;
 
 namespace Hengrui.Commons
 {
@@ -17,8 +18,18 @@ namespace Hengrui.Commons
         {
             var dic = new Dictionary<int, string>();
             foreach (var value in Enum.GetValues(typeof(ReviewRoleType)))
-                dic.Add((int) value, value.ToString());
+                dic.Add((int)value, value.ToString());
             return dic;
+        }
+
+        public static IEnumerable<Filter> GetFilters()
+        {
+            return new FilterMgr().GetItems();
+        }
+
+        public static IEnumerable<View> GetViews()
+        {
+            return new ViewMgr().GetItems();
         }
 
         public static IEnumerable<City> GetCities()

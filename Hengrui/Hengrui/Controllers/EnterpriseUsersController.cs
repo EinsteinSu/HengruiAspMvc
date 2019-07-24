@@ -18,7 +18,6 @@ namespace Hengrui.Controllers
         [ValidateInput(false)]
         public ActionResult GridViewPartial()
         {
-            var user = User;
             return GetList();
         }
 

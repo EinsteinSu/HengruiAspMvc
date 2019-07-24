@@ -1,5 +1,4 @@
 ﻿using System;
-using DevExpress.Web.Mvc;
 using System.Web.Mvc;
 using Hengrui.Business;
 using Hengrui.Commons;
@@ -51,60 +50,64 @@ namespace Hengrui.Controllers
         public ActionResult RegionGridViewPartial(int cityId)
         {
             ViewData["CityId"] = cityId;
-            return PartialView("_RegionGridViewPartial", ((ICityMgr)Mgr).GetRegions(cityId));
+            return PartialView("_RegionGridViewPartial", ((ICityMgr) Mgr).GetRegions(cityId));
         }
 
-        [HttpPost, ValidateInput(false)]
-        public ActionResult RegionGridViewPartialAddNew(Hengrui.DataAccess.Models.Organization.Region item, int cityId)
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult RegionGridViewPartialAddNew(Region item, int cityId)
         {
             ViewData["CityId"] = cityId;
             if (ModelState.IsValid)
-            {
                 try
                 {
-                    ((ICityMgr)Mgr).AddRegion(cityId, item);
+                    ((ICityMgr) Mgr).AddRegion(cityId, item);
                 }
                 catch (Exception e)
                 {
                     ViewData["EditError"] = e.Message;
                 }
-            }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_RegionGridViewPartial", ((ICityMgr)Mgr).GetRegions(cityId));
+
+            return PartialView("_RegionGridViewPartial", ((ICityMgr) Mgr).GetRegions(cityId));
         }
-        [HttpPost, ValidateInput(false)]
-        public ActionResult RegionGridViewPartialUpdate(Hengrui.DataAccess.Models.Organization.Region item, int cityId)
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult RegionGridViewPartialUpdate(Region item, int cityId)
         {
             ViewData["CityId"] = cityId;
             if (ModelState.IsValid)
-            {
                 try
                 {
-                    ((ICityMgr)Mgr).UpdateRegion(item);
+                    ((ICityMgr) Mgr).UpdateRegion(item);
                 }
                 catch (Exception e)
                 {
                     ViewData["EditError"] = e.Message;
                 }
-            }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_RegionGridViewPartial", ((ICityMgr)Mgr).GetRegions(cityId));
+
+            return PartialView("_RegionGridViewPartial", ((ICityMgr) Mgr).GetRegions(cityId));
         }
-        [HttpPost, ValidateInput(false)]
+
+        [HttpPost]
+        [ValidateInput(false)]
         public ActionResult RegionGridViewPartialDelete(int id, int cityId)
         {
             ViewData["CityId"] = cityId;
             try
             {
-                ((ICityMgr)Mgr).DeleteRegion(id);
+                ((ICityMgr) Mgr).DeleteRegion(id);
             }
             catch (Exception e)
             {
                 ViewData["EditError"] = e.Message;
             }
-            return PartialView("_RegionGridViewPartial", ((ICityMgr)Mgr).GetRegions(cityId));
+
+            return PartialView("_RegionGridViewPartial", ((ICityMgr) Mgr).GetRegions(cityId));
         }
     }
 }

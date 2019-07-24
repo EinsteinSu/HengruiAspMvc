@@ -29,13 +29,8 @@
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
         settings.Columns.Add("Name");
-        settings.Columns.Add(s =>
-        {
-            s.FieldName = "StoredProcedure";
-            s.Caption = @"Stored Procedure";
-            s.EditorProperties().CheckBox(c=> {});
-        });
-        settings.Columns.Add("Condition");
+        settings.Columns.Add("Script");
+        settings.Columns.Add("Parameters");
     });
     if (ViewData["EditError"] != null)
     {

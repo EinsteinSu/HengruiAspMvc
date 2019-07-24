@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Hengrui.Business;
 using Hengrui.Commons;
 using Hengrui.DataAccess.Models.Projects;
 using Hengrui.Models;
@@ -22,7 +23,7 @@ namespace Hengrui.Controllers
         [ValidateInput(false)]
         public ActionResult GridViewPartial(string viewName)
         {
-            return new ContentResult() { Content = viewName };
+            return GetList();
         }
 
         [HttpPost, ValidateInput(false)]
@@ -86,7 +87,11 @@ namespace Hengrui.Controllers
         {
             get
             {
-                return new ProjectControllerViewModel { DisplayColumns = new[] { "a", "b" } };
+                return new ProjectControllerViewModel
+                {
+                    DisplayColumns = new[] { "a", "b" },
+                    Projects = new ProjectMgr().GetItems()
+                };
             }
         }
     }

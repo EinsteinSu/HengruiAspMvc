@@ -19,8 +19,8 @@
     <item Text="Safari" />
     <item Text="Opera" />
   </group>
-  <group Text="Language">
-    <item Text="C#" />
+  <group Text="Projects">
+    <item Text="Project Edit" NavigateUrl="/projects"/>
     <item Text="Visual Basic" />
     <item Text="C++" />
     <item Text="Java" />

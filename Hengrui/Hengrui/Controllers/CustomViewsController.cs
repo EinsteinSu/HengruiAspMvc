@@ -5,39 +5,38 @@ using Hengrui.DataAccess.Models.Projects;
 
 namespace Hengrui.Controllers
 {
-    public class CutomViewsController : CrudControllerBase<CustomView>
+    public class CustomViewsController : CrudControllerBase<CustomView>
     {
-        // GET: CutomViews
         public ActionResult Index()
         {
             return View();
         }
 
         [ValidateInput(false)]
-        public ActionResult CustomViewGridViewPartial()
+        public ActionResult GridViewPartial()
         {
-            return GetList("CustomViewGridViewPartial");
+            return GetList();
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult CustomViewGridViewPartialAddNew(CustomView item)
+        public ActionResult GridViewPartialAddNew(CustomView item)
         {
-            return AddNew(item, "CustomViewGridViewPartial");
+            return AddNew(item);
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult CustomViewGridViewPartialUpdate(CustomView item)
+        public ActionResult GridViewPartialUpdate(CustomView item)
         {
-            return Update(item, "CustomViewGridViewPartial");
+            return Update(item);
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult CustomViewGridViewPartialDelete(int id)
+        public ActionResult GridViewPartialDelete(int id)
         {
-            return Delete(id, "CustomViewGridViewPartial");
+            return Delete(id);
         }
 
         protected override void InitializeInterfaces()
