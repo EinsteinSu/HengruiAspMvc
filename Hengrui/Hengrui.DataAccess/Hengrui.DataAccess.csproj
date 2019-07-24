@@ -121,7 +121,7 @@
     <Compile Include="Models\Organization\Users\User.cs" />
     <Compile Include="Models\Projects\Contract.cs" />
     <Compile Include="Models\Projects\Emergency.cs" />
-    <Compile Include="Models\Projects\CustomView.cs" />
+    <Compile Include="Models\Administration\CustomView.cs" />
     <Compile Include="Models\Projects\Gcgk.cs" />
     <Compile Include="Models\Projects\OwnerLogin.cs" />
     <Compile Include="Models\Projects\Paper.cs" />
